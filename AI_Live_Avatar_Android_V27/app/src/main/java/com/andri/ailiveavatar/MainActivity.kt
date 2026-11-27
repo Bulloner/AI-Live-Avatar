@@ -34,6 +34,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var avatar: AvatarView
     private lateinit var preview: PreviewView
     private lateinit var status: TextView
+    private var showingCrashReport = false
     private val executor = Executors.newSingleThreadExecutor()
     private val cutoutExecutor = Executors.newSingleThreadExecutor()
     private val selfieSegmenter by lazy {
@@ -125,7 +126,9 @@ class MainActivity : ComponentActivity() {
 
         val crashFile = File(filesDir, "crash-log.txt")
         if (crashFile.exists()) {
+            showingCrashReport = true
             val report = crashFile.readText()
+            crashFile.delete()
             setContentView(android.widget.TextView(this).apply {
                 text = "LAPORAN CRASH AI LIVE AVATAR\\n\\n$report"
                 textSize = 14f
@@ -497,6 +500,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onResume() {
         super.onResume()
+        if (showingCrashReport) return
         activityResumed = true
         if (hasRuntimePermissions()) {
             if (!tracking) startTracking()

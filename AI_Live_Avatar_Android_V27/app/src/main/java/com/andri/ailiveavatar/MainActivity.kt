@@ -122,6 +122,19 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(b: Bundle?) {
         super.onCreate(b)
+
+        val crashFile = File(filesDir, "crash-log.txt")
+        if (crashFile.exists()) {
+            val report = crashFile.readText()
+            setContentView(android.widget.TextView(this).apply {
+                text = "LAPORAN CRASH AI LIVE AVATAR\\n\\n$report"
+                textSize = 14f
+                setTextIsSelectable(true)
+                setPadding(24, 32, 24, 32)
+            })
+            return
+        }
+
         setContentView(R.layout.activity_main)
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         avatar=findViewById(R.id.avatar); preview=findViewById(R.id.cameraPreview); status=findViewById(R.id.status)

@@ -1,11 +1,15 @@
 package com.andri.ailiveavatar
 
 import android.content.Context
+import android.util.AttributeSet
 import android.graphics.*
 import android.view.View
 import kotlin.math.sin
 
-class AvatarView(context: Context): View(context){
+class AvatarView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null
+) : View(context, attrs) {
     private val p=Paint(Paint.ANTI_ALIAS_FLAG); private var mouth=0.10f; private var manualMouth=0.10f; private var mouthTarget=0.10f; private var blink=0f; private var yaw=0f; private var pitch=0f; private var smile=0f; private var audio=0f; private var smooth=0.72f; private var intensity=1f; private var idle=true; private var mirror=false; private var t=0f; private var bg:Bitmap?=null; private var avatarBmp:Bitmap?=null; private var headFollow=true; private var avatarScale=0.92f; private var avatarAlpha=1f; private var avatarX=0f; private var avatarY=0f; private var faceVisible=false; private var trackingQuality=0f; private var moodSmile=0f; private var moodMouth=0f
     fun setManualMouth(v:Float){manualMouth=v.coerceIn(0f,1f); mouthTarget=manualMouth; invalidate()}
     // Presets: 0 natural, 1 happy, 2 surprised, 3 calm

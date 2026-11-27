@@ -1,0 +1,11 @@
+PANDUAN BUILD APK — AI LIVE AVATAR V27
+
+1. Ekstrak ZIP ini di komputer/laptop.
+2. Buka folder AI_Live_Avatar_Android_V27 melalui Android Studio.
+3. Pastikan koneksi internet aktif saat Gradle Sync pertama kali, karena dependensi AndroidX, CameraX, dan ML Kit perlu diunduh.
+4. Tunggu Gradle Sync selesai. Jika Android Studio meminta memasang Android SDK Platform 35, setujui pemasangannya.
+5. Pilih Build > Build Bundle(s) / APK(s) > Build APK(s).
+6. Jika build berhasil, klik locate pada notifikasi untuk menemukan app-debug.apk.
+7. Pindahkan APK ke HP Android dan izinkan instalasi dari sumber tersebut bila diminta.
+
+PENTING: Proyek ini belum dikompilasi atau diuji di perangkat. Build harus dilakukan dan hasilnya diuji. TikTok LIVE screen sharing bergantung pada dukungan akun/perangkat; aplikasi ini tidak menjamin integrasi kamera virtual langsung.
